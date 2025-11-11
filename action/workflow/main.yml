@@ -1,0 +1,39 @@
+#name for the github action
+name: CI Pipeline for demo app
+
+#Defines the events that trigger this workflow.
+on:
+  push:
+    branches:
+      - main
+  pull-request:
+    branches:
+      - ayoola.dev
+#Defines what the workflow actually does.
+# runs-on  TellsGitHub what type of virtual machine to run on.
+# steps: this are each step perform a single tasks
+jobs:
+  build-deploy:
+    name: build and deploy demo app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: setup java
+        uses: actions/setup-java@v5
+        #provide configuration parameter
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: run test
+        run: mvn -B test --file pom.xml
+
+      - name: build demo project
+        run: mvn  -B clean package --file pom.xml
+
+
+
+
