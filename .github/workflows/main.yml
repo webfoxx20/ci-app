@@ -2,7 +2,7 @@
 name: CI Pipeline for demo app
 
 #Defines the events that trigger this workflow.
-oon:
+on:
   push:
     branches:
       - master
