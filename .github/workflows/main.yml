@@ -2,11 +2,11 @@
 name: CI Pipeline for demo app
 
 #Defines the events that trigger this workflow.
-on:
+oon:
   push:
     branches:
       - master
-  pull-request:
+  pull_request:
     branches:
       - ayoola.dev
 #Defines what the workflow actually does.
